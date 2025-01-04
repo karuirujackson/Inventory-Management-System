@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+A step-by-step Build and Deploy a Complete Full Stack Inventory Management Dashboard Application using Nextjs, Redux, Node,PostgreSQL and Vercel. Next.js is used for the frontend, styled with Tailwind CSS and featuring Material UI Data Grid for complex data handling. State management is streamlined with Redux Toolkit, supplemented by Redux Toolkit Query for data fetching.
+
+Node.js for the backend using Prisma as the ORM to facilitate postgreSQL database interactions and Vercel for continous deployment.
+
 ## Getting Started
 
 First, run the development server:
