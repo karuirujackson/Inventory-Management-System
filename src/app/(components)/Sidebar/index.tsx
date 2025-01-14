@@ -1,9 +1,17 @@
 'use client'
 
+import { setSidebarCollapsed } from '@/app/state';
+import { useAppDispatch, useAppSelector } from '@/redux';
 import { Menu } from 'lucide-react';
 import React from 'react'
 
 const SideBar = () => {
+    const dispatch = useAppDispatch();
+    const isSidebarCollapsed =useAppSelector((state) => state.global.isDarkMode);
+
+    const toggleSidebar = () => {
+        dispatch(setSidebarCollapsed(!isSidebarCollapsed));
+    };
     return (
         <div className='border border-r-gray-300'>
             {/* TOP LOGO */}
