@@ -1,24 +1,29 @@
 'use client'
 
-import { setSidebarCollapsed } from '@/app/state';
+import { setIsSidebarCollapsed } from '../../state/index';
 import { useAppDispatch, useAppSelector } from '@/redux';
 import { Menu } from 'lucide-react';
 import React from 'react'
 
 const SideBar = () => {
     const dispatch = useAppDispatch();
-    const isSidebarCollapsed =useAppSelector((state) => state.global.isDarkMode);
+    const isSidebarCollapsed = useAppSelector(
+        (state) => state.global.isSidebarCollapsed
+    );
 
     const toggleSidebar = () => {
-        dispatch(setSidebarCollapsed(!isSidebarCollapsed));
+        dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
     };
+
+    const sidebarClassNames =`fixed flex flex-col ${isSidebarCollapsed ? 'w-0 md:w-16' : 'w-72 md:w-64'} bg-white transition-all duration-300 overflow-hidden h-full shadow-md z-40`;
+
     return (
-        <div className='border border-r-gray-300'>
+        <div className={sidebarClassNames}>
             {/* TOP LOGO */}
-            <div className="flex gap-3 justify-between md:justify-normal items-center pt-8">
+            <div className={`flex gap-3 justify-between md:justify-normal items-center pt-8 ${isSidebarCollapsed ? 'px-5' : 'px-8'}`}>
                 <div className="flex items-center">Logo</div>
-                <h1 className="font-extrabold text-2xl">JayStore</h1>
-                <button className="md:hidden px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100" onClick={() => {}}>
+                <h1 className={`${isSidebarCollapsed ? 'hidden' : 'block'} font-extrabold text-2xl`}>JayStore</h1>
+                <button onClick ={toggleSidebar} className="md:hidden px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100">
                     <Menu className='w-4 h-4' />
                 </button>
             </div>
@@ -33,7 +38,7 @@ const SideBar = () => {
                 <p className="text-center text-xs text-gray-500">&copy; 2025 JayStore</p>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default SideBar;
