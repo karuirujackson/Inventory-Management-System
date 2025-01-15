@@ -2,8 +2,9 @@
 
 import { setIsSidebarCollapsed } from '../../state/index';
 import { useAppDispatch, useAppSelector } from '@/redux';
-import { Menu } from 'lucide-react';
-import React from 'react'
+import { Archive, CircleDollarSign, Clipboard, Layout, Menu, SlidersHorizontal, User } from 'lucide-react';
+import SidebarLink from '../SidebarLink';
+import React from 'react';
 
 const SideBar = () => {
     const dispatch = useAppDispatch();
@@ -30,11 +31,16 @@ const SideBar = () => {
 
             {/* LINKS */}
             <div className="flex-grow mt-8">
-                <span>Links Here!</span>
+                <SidebarLink href='./dashboard' label='Dashboard' icon={Layout} isCollapsed={isSidebarCollapsed} />
+                <SidebarLink href='./inventory' label='Inventory' icon={Archive} isCollapsed={isSidebarCollapsed} />
+                <SidebarLink href='./products' label='Prouduct' icon={Clipboard} isCollapsed={isSidebarCollapsed} />
+                <SidebarLink href='./users' label='Users' icon={User} isCollapsed={isSidebarCollapsed} />
+                <SidebarLink href='./settings' label='Settings' icon={SlidersHorizontal} isCollapsed={isSidebarCollapsed} />
+                <SidebarLink href='./expenses' label='Expenses' icon={CircleDollarSign} isCollapsed={isSidebarCollapsed} />
             </div>
 
             {/* FOOTER */}
-            <div>
+            <div className={`${isSidebarCollapsed ? 'hidden' : "block"} mb-10`}>
                 <p className="text-center text-xs text-gray-500">&copy; 2025 JayStore</p>
             </div>
         </div>
